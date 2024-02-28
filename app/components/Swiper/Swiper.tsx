@@ -12,11 +12,11 @@ import Image from "next/image";
 import { Slide } from "@/app/model/Slide";
 import classes from './Swiper.module.css';
 
-interface DemoSliderProps {
+interface SliderProps {
   data: Slide[];
 }
 
-const SliderComponent: React.FC<DemoSliderProps> = ({ data }) => {
+const SliderComponent: React.FC<SliderProps> = ({ data }) => {
 
   const navigationNextRef = useRef<any>();
   const navigationPrevRef = useRef<any>();

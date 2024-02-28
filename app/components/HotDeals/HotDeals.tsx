@@ -19,7 +19,7 @@ interface Props {
 }
 
 const HotDeals: React.FC<Props> = ({ data }) => {
-const getAllItems = data.map(({ items }: HotDeals) => items).flat();
+const getAllItems: Items[] = data.map(({ items }: HotDeals) => items).flat();
   return (
     <section className="mainWidth flex gap-8 justify-between">
         <div className="flex items-center flex-col whitespace-nowrap">
@@ -33,7 +33,7 @@ const getAllItems = data.map(({ items }: HotDeals) => items).flat();
             loop={true}
             modules={[Autoplay, Navigation, Pagination]}
         >
-            {data && data.length && getAllItems.map((item: Items) => (
+            {getAllItems && getAllItems.length && getAllItems.map((item: Items) => (
                 <SwiperSlide key={item.entityId}>
                     <div className="shortcutContainer">
                         <div className="imageContainer relative mb-[12px]">
@@ -46,7 +46,7 @@ const getAllItems = data.map(({ items }: HotDeals) => items).flat();
                             <span>{item.publication.priceInfo.price}</span>
                         </div>
                         {!!item.publication.tagsOnImage && item.publication.tagsOnImage.map((tag: string) => (
-                            <span className="bg-[#f7f7f7] text-[#424242] px-[3px] py-[4px] font-semibold text-[10px] rounded-sm">{tag}</span>
+                            <span key={tag} className="bg-[#f7f7f7] text-[#424242] px-[3px] py-[4px] font-semibold text-[10px] rounded-sm">{tag}</span>
                         ))}
                         <div className="flex text-[12px] mt-[8px]">
                             <Image alt="rating" src={Star} />
